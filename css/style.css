@@ -33,7 +33,22 @@ body {
     background: 0;
 }
 
+#submit {
+    padding: 15px;
+    border: 0;
+    border-radius: 20px;
+    background: 0;
+    margin-left: -90px;
+}
+
+#warning {
+    font-size: 15px;
+    color: #ff0000;
+    margin-top: -3px;
+}
+
 #result {
     font-size: 50px;
     font-weight: bold;
+    margin: 5px 0 0 0;
 }

@@ -11,12 +11,15 @@
     <div class="container">
         <h2>Odd Even Calculator</h2>
 
-        <form class="forms">
+        <form class="forms" onsubmit="return oddEven()">
             <input type="text" id="input-box" placeholder="Enter number">
-            <span id="warning"></span>
+            <button type="submit" id="submit">Calculate</button>
+            <p id="warning"></p>
         </form>
 
-        <h1 id="result">Is odd number</h1>
+        <h1 id="result"></h1>
+
+        <script src="script.js"></script>
     </div>
 </body>
 </html>
