@@ -3,8 +3,9 @@ var result = document.getElementById('result');
 
 function oddEven() {
     const inputNumber = document.getElementById('input-box').value;
-    const number = parseInt(inputNumber);
+    const number = parseInt(inputNumber); //converts input to a number
 
+    //The code below reject input if it is not a number or if empty string.
     if (number == 0 || !number) {
         warning.innerHTML = 'please input a number';
         document.getElementById('input-box').style.border = '2px solid red';
@@ -16,6 +17,7 @@ function oddEven() {
         return false;
     }
 
+    //The code verifies if a number is even or odd
     if (number % 20 == 0) {
         result.innerHTML = `${number} is even number`;
         return false;
