@@ -1,29 +1,23 @@
 // Get references to the HTML elements by their IDs
 const warning = document.getElementById('warning');
-const guessedNumber = document.getElementById('guessed-number');
-const guessResult = document.getElementById('guess-result');
+const result = document.getElementById('result');
 
-// Function to handle the guessing logic
-function guessed() {
-    // Generate a random number between 0 and 20
-    const randomNumber = Math.round(Math.random() * 20);
-
+function oddEven() {
     // Get the value from the input box and parse it as an integer
-    const numberGuess = document.getElementById('input-box').value;
-    const guess = parseInt(numberGuess);
+    const inputNumber = document.getElementById('input-box').value;
+    const number = parseInt(inputNumber); // Converts input to a number
 
-    // Check if the input is empty
-    if (numberGuess.length === 0) {
+    // Check if the input is empty or not a number
+    // Note: isNaN() is used to check if the parsed number is not a valid number
+    if (isNaN(number) || inputNumber === "") {
         // Display a warning message
-        warning.innerHTML = 'Please enter a number to guess';
-        // Highlight the input box and submit button with a red border
-        document.getElementById('input-box').style.border = '1px solid red';
-        document.getElementById('submit').style.border = '1px solid red';
+        warning.innerHTML = 'Please input a number';
+        // Highlight the input box with a red border
+        document.getElementById('input-box').style.border = '2px solid red';
 
         // Reset the border color and hide the warning message after 3 seconds
         setTimeout(() => {
-            document.getElementById('input-box').style.border = '';
-            document.getElementById('submit').style.border = '';
+            document.getElementById('input-box').style.border = '2px solid green';
             warning.style.display = 'none';
         }, 3000);
 
@@ -34,30 +28,12 @@ function guessed() {
         return false;
     }
 
-    // Check if the guessed number is outside the valid range (0-20)
-    if (guess < 0 || guess > 20) {
-        // Display a warning message
-        warning.innerHTML = 'You can only guess between 0 and 20';
-        // Make sure the warning message is visible
-        warning.style.display = 'block';
-        // Prevent further processing
-        return false;
-    }
-
-    // Hide the warning message if input is valid
-    warning.style.display = 'none';
-
-    // Check if the guessed number matches the random number
-    if (guess === randomNumber) {
-        // Display the random number
-        guessedNumber.innerHTML = randomNumber;
-        // Show success message
-        guessResult.innerHTML = `${guess} - You guessed right!`;
+    // Check if the number is even or odd
+    // Corrected the modulus check to `number % 2 == 0` for even numbers
+    if (number % 2 == 0) {
+        result.innerHTML = `${number} is an even number`;
     } else {
-        // Display the random number
-        guessedNumber.innerHTML = randomNumber;
-        // Show failure message
-        guessResult.innerHTML = `${guess} - You guessed wrong!`;
+        result.innerHTML = `${number} is an odd number`;
     }
 
     // Indicate that the form submission should not proceed
