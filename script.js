@@ -28,6 +28,24 @@ function oddEven() {
         return false;
     }
 
+    if (inputNumber.length > 8) {
+       warning.innerHTML = 'Number must not be more than 8 digits'; 
+
+       document.getElementById('input-box').style.border = '2px solid red';
+
+        // Reset the border color and hide the warning message after 3 seconds
+        setTimeout(() => {
+            document.getElementById('input-box').style.border = '2px solid green';
+            warning.style.display = 'none';
+        }, 3000);
+
+        // Make sure the warning message is visible immediately
+        warning.style.display = 'block';
+
+        // Prevent further processing
+        return false;
+    }
+
     // Check if the number is even or odd
     // Corrected the modulus check to `number % 2 == 0` for even numbers
     if (number % 2 == 0) {
@@ -36,6 +54,8 @@ function oddEven() {
         result.innerHTML = `${number} is an odd number`;
     }
 
+    document.getElementById('input-box').value = ''; // Input fields turn empty after calculate button is clicked
+    
     // Indicate that the form submission should not proceed
     return false;
 }
